@@ -397,6 +397,10 @@
     <string name="lockscreen_shortcut_none">None</string>
     <string name="lockscreen_shortcut_enforce_title">Single shortcut</string>
     <string name="lockscreen_shortcut_enforce_summary">Enforce chosen shortcut to be the only existing priority\nWill show nothing until the specific chosen shortcut is available</string>
+    
+    <!-- Power menu and dialogs opacity -->
+    <string name="power_menu_transparency">Power/reboot menu opacity</string>
+    <string name="power_menu_dialog_dim">Power/reboot dialog dim background amount</string>
 
     <!-- Bluetooth status -->
     <string name="bluetooth_battery_title">Bluetooth battery status</string>

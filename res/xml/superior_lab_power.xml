@@ -34,4 +34,23 @@
         android:defaultValue="false" />
 
     </PreferenceCategory>
+    
+    <PreferenceCategory
+        android:title="powermenu layout">
+
+    <com.superior.support.preferences.SystemSettingSeekBarPreference
+            android:key="transparent_power_menu"
+            android:title="@string/power_menu_transparency"
+            android:max="100"
+            android:min="0"
+            android:defaultValue="100" />
+
+    <com.superior.support.preferences.SystemSettingSeekBarPreference
+            android:key="transparent_power_dialog_dim"
+            android:title="@string/power_menu_dialog_dim"
+            android:max="100"
+            android:min="0"
+            android:defaultValue="50" />
+
+    </PreferenceCategory>
 </PreferenceScreen>
