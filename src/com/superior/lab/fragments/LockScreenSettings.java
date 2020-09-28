@@ -25,6 +25,7 @@ import android.content.ContentResolver;
 import android.app.WallpaperManager;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -50,9 +51,13 @@ import java.lang.StringBuilder;
 public class LockScreenSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
 
-        private static final String UDFPS_CATEGORY = "udfps_category";
         private static final String SHORTCUT_START_KEY = "lockscreen_shortcut_start";
     	private static final String SHORTCUT_END_KEY = "lockscreen_shortcut_end";
+
+        private static final String UDFPS_CATEGORY = "udfps_category";
+
+        private static final String FINGERPRINT_SUCCESS_VIB = "fingerprint_success_vib";
+        private static final String FINGERPRINT_ERROR_VIB = "fingerprint_error_vib";
 
     	private static final String[] DEFAULT_START_SHORTCUT = new String[] { "home", "flashlight" };
     	private static final String[] DEFAULT_END_SHORTCUT = new String[] { "wallet", "qr_code_scanner", "camera" };
@@ -61,6 +66,9 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     	private static final String KG_CUSTOM_CLOCK_COLOR_ENABLED = "kg_custom_clock_color_enabled";
 
         private PreferenceCategory mUdfpsCategory;
+        private FingerprintManager mFingerprintManager;
+        private SwitchPreference mFingerprintSuccessVib;
+        private SwitchPreference mFingerprintErrorVib;
         private SystemSettingListPreference mStartShortcut;
     	private SystemSettingListPreference mEndShortcut;
     	private SwitchPreference mEnforceShortcut;
@@ -75,6 +83,7 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         Resources resources = getResources();
         final PreferenceScreen prefScreen = getPreferenceScreen();
         final PreferenceScreen prefSet = getPreferenceScreen();
+        final PackageManager mPm = getActivity().getPackageManager();
 
         mStartShortcut = findPreference(SHORTCUT_START_KEY);
         mEndShortcut = findPreference(SHORTCUT_END_KEY);
@@ -94,6 +103,27 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
                 Settings.Secure.KG_CUSTOM_CLOCK_COLOR_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
         mKGCustomClockColor.setChecked(mKGCustomClockColorEnabled);
         mKGCustomClockColor.setOnPreferenceChangeListener(this);
+
+        mFingerprintManager = (FingerprintManager) getActivity().getSystemService(Context.FINGERPRINT_SERVICE);
+        mFingerprintSuccessVib = (SwitchPreference) findPreference(FINGERPRINT_SUCCESS_VIB);
+        mFingerprintErrorVib = (SwitchPreference) findPreference(FINGERPRINT_ERROR_VIB);
+        if (mPm.hasSystemFeature(PackageManager.FEATURE_FINGERPRINT) &&
+                mFingerprintManager != null) {
+            if (!mFingerprintManager.isHardwareDetected()) {
+                prefSet.removePreference(mFingerprintSuccessVib);
+                prefSet.removePreference(mFingerprintErrorVib);
+            } else {
+                mFingerprintSuccessVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_SUCCESS_VIBRATE, 1) == 1));
+                mFingerprintSuccessVib.setOnPreferenceChangeListener(this);
+                mFingerprintErrorVib.setChecked((Settings.System.getInt(getContentResolver(),
+                        Settings.System.FP_ERROR_VIBRATE, 1) == 1));
+                mFingerprintErrorVib.setOnPreferenceChangeListener(this);
+            }
+        } else {
+            prefSet.removePreference(mFingerprintSuccessVib);
+            prefSet.removePreference(mFingerprintErrorVib);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -114,7 +144,17 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             Settings.Secure.putIntForUser(resolver,
                 Settings.Secure.KG_CUSTOM_CLOCK_COLOR_ENABLED, val ? 1 : 0, UserHandle.USER_CURRENT);
             return true;
-        }  
+        } else if (preference == mFingerprintSuccessVib) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_SUCCESS_VIBRATE, value ? 1 : 0);
+            return true;
+        } else if (preference == mFingerprintErrorVib) {
+            boolean value = (Boolean) objValue;
+            Settings.System.putInt(getActivity().getContentResolver(),
+                    Settings.System.FP_ERROR_VIBRATE, value ? 1 : 0);
+            return true;
+        }
         return false;
     }
     
