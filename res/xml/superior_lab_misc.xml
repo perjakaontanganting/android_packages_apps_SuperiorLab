@@ -38,6 +38,12 @@
             android:title="@string/pie_animation_style_title"
             android:summary="@string/pie_animation_style_summary"
             android:defaultValue="false" />
+            
+        <com.superior.support.preferences.SystemSettingSwitchPreference
+            android:key="charging_animation_bg"
+            android:title="@string/charging_animation_bg_title"
+            android:summary="@string/charging_animation_bg_summary"
+            android:defaultValue="false" />
 
         <!-- Unlimited google photos storage -->
         <SwitchPreference

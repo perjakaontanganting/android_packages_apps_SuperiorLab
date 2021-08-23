@@ -379,6 +379,10 @@
     <!-- Android P animation style -->
     <string name="pie_animation_style_title">Android P animation style</string>
     <string name="pie_animation_style_summary">Enable Android P \"Default\" animations</string>
+    
+    <string name="system_charging">System Charging Options</string>
+    <string name="charging_animation_bg_title">Charging Background</string>
+    <string name="charging_animation_bg_summary">Enabling this option will make the background on System Animation to black</string>
 
     <!-- Bluetooth status -->
     <string name="bluetooth_battery_title">Bluetooth battery status</string>
