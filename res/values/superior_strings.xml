@@ -649,4 +649,7 @@
     <string name="games_device_spoof_title">Unlock higher FPS in games</string>
     <string name="games_device_spoof_summary">Spoof device as a high-end model in certain games, to unlock higher FPS</string>
     
+    <string name="click_partial_screenshot_title">Click to partial screenshot</string>
+    <string name="click_partial_screenshot_summary">Short click Volume Down and Power to take partial screenshot</string>
+    
 </resources>

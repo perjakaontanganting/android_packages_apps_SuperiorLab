@@ -40,6 +40,12 @@
             android:defaultValue="false" />
             
         <com.superior.support.preferences.SystemSettingSwitchPreference
+            android:key="click_partial_screenshot"
+            android:title="@string/click_partial_screenshot_title"
+            android:summary="@string/click_partial_screenshot_summary"
+            android:defaultValue="false" />
+            
+        <com.superior.support.preferences.SystemSettingSwitchPreference
             android:key="charging_animation_bg"
             android:title="@string/charging_animation_bg_title"
             android:summary="@string/charging_animation_bg_summary"
