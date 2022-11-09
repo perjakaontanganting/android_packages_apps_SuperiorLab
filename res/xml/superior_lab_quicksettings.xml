@@ -40,6 +40,13 @@
             android:summary="@string/qs_footer_datausage_summary"
             android:defaultValue="false" />
             
+        <com.superior.support.preferences.SystemSettingListPreference
+         	android:key="custom_transitions_page_tile"
+         	android:entries="@array/qs_transitions_entries"
+         	android:entryValues="@array/qs_transitions_values"
+         	android:summary="%s"
+         	android:title="@string/qs_transitions_title" />
+            
         <com.superior.support.preferences.SystemSettingSeekBarPreference
         	android:key="qs_transparency"
         	android:title="@string/qs_transparency_title"
