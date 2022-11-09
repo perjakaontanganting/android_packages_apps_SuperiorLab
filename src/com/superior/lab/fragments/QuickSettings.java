@@ -37,6 +37,8 @@ import java.util.Locale;
 import android.text.TextUtils;
 import android.view.View;
 
+import com.superior.support.preferences.SystemSettingListPreference;
+
 import java.util.List;
 import java.util.ArrayList;
 
@@ -44,8 +46,10 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         OnPreferenceChangeListener {
 
     private static final String QUICK_PULLDOWN = "status_bar_quick_qs_pulldown";
+    private static final String QS_PAGE_TRANSITIONS = "custom_transitions_page_tile";
 
     private ListPreference mQuickPulldown;
+    private SystemSettingListPreference mPageTransitions;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -62,6 +66,13 @@ public class QuickSettings extends SettingsPreferenceFragment implements
         mQuickPulldown.setValue(String.valueOf(qpmode));
         mQuickPulldown.setSummary(mQuickPulldown.getEntry());
         mQuickPulldown.setOnPreferenceChangeListener(this);
+        mPageTransitions = (SystemSettingListPreference) findPreference(QS_PAGE_TRANSITIONS);
+        mPageTransitions.setOnPreferenceChangeListener(this);
+        int customTransitions = Settings.System.getIntForUser(resolver,
+                Settings.System.CUSTOM_TRANSITIONS_KEY,
+                0, UserHandle.USER_CURRENT);
+        mPageTransitions.setValue(String.valueOf(customTransitions));
+        mPageTransitions.setSummary(mPageTransitions.getEntry());
 
     }
 
@@ -77,7 +88,15 @@ public class QuickSettings extends SettingsPreferenceFragment implements
             mQuickPulldown.setSummary(
                     mQuickPulldown.getEntries()[index]);
             return true;
-        }
+        } else if (preference.equals(mPageTransitions)) {
+            int customTransitions = Integer.parseInt(((String) newValue).toString());
+            Settings.System.putIntForUser(resolver,
+                    Settings.System.CUSTOM_TRANSITIONS_KEY, customTransitions, UserHandle.USER_CURRENT);
+            int index = mPageTransitions.findIndexOfValue((String) newValue);
+            mPageTransitions.setSummary(
+                    mPageTransitions.getEntries()[index]);
+            return true;
+          } 
         return false;
     }
 
