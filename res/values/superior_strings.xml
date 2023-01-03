@@ -635,4 +635,8 @@
     <string name="edge_light_repeat_animation_summary_off">Show only once</string>
     <string name="edge_light_color_mode_title">Edge light color mode</string>
     
+    <!-- Lockscreen Clock -->
+    <string name="kg_custom_clock_color_enabled_title">Custom lockscreen clock color</string>
+    <string name="kg_custom_clock_color_title">Clock color</string>
+    
 </resources>
