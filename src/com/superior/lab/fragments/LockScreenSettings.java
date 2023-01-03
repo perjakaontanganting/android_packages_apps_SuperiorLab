@@ -28,6 +28,7 @@ import android.content.res.Resources;
 import android.hardware.fingerprint.FingerprintManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.UserHandle;
 import androidx.preference.SwitchPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -42,6 +43,7 @@ import com.android.settings.SettingsPreferenceFragment;
 import com.android.internal.util.superior.udfps.UdfpsUtils;
 
 import com.superior.support.preferences.SystemSettingListPreference;
+import com.superior.support.preferences.SecureSettingSwitchPreference;
 
 import java.lang.StringBuilder;
 
@@ -55,12 +57,15 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
     	private static final String[] DEFAULT_START_SHORTCUT = new String[] { "home", "flashlight" };
     	private static final String[] DEFAULT_END_SHORTCUT = new String[] { "wallet", "qr_code_scanner", "camera" };
     	private static final String SHORTCUT_ENFORCE_KEY = "lockscreen_shortcut_enforce";
+    	
+    	private static final String KG_CUSTOM_CLOCK_COLOR_ENABLED = "kg_custom_clock_color_enabled";
 
         private PreferenceCategory mUdfpsCategory;
         private SystemSettingListPreference mStartShortcut;
     	private SystemSettingListPreference mEndShortcut;
     	private SwitchPreference mEnforceShortcut;
-
+    	private SwitchPreference mKGCustomClockColor;
+    	
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -83,6 +88,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         if (!UdfpsUtils.hasUdfpsSupport(getContext())) {
             prefSet.removePreference(mUdfpsCategory);
         }
+        
+        mKGCustomClockColor = (SwitchPreference) findPreference(KG_CUSTOM_CLOCK_COLOR_ENABLED);
+        boolean mKGCustomClockColorEnabled = Settings.Secure.getIntForUser(resolver,
+                Settings.Secure.KG_CUSTOM_CLOCK_COLOR_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+        mKGCustomClockColor.setChecked(mKGCustomClockColorEnabled);
+        mKGCustomClockColor.setOnPreferenceChangeListener(this);
     }
 
     public boolean onPreferenceChange(Preference preference, Object objValue) {
@@ -98,7 +109,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
             setShortcutSelection(mStartShortcut.getValue(), true, value);
             setShortcutSelection(mEndShortcut.getValue(), false, value);
             return true; 
-        }
+        } else if (preference == mKGCustomClockColor) {
+            boolean val = (Boolean) objValue;
+            Settings.Secure.putIntForUser(resolver,
+                Settings.Secure.KG_CUSTOM_CLOCK_COLOR_ENABLED, val ? 1 : 0, UserHandle.USER_CURRENT);
+            return true;
+        }  
         return false;
     }
     
