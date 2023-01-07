@@ -444,4 +444,8 @@
     <string name="bg_color_title">Background Color</string>
     <string name="bg_color_summary">Override default background accent color</string>
     
+    <!-- Statusbar Clock background chip -->
+    <string name="statusbar_clock_chip_title">Background chip</string>
+    <string name="statusbar_clock_chip_summary">Display accented chip behind clock</string>
+    
 </resources>
