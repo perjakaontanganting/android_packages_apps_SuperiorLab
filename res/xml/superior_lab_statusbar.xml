@@ -83,6 +83,12 @@
         android:title="@string/show_fiveg_icon_title"
         android:summary="@string/show_fiveg_icon_summary"
         android:defaultValue="false" />
+        
+    <com.superior.support.preferences.SecureSettingSwitchPreference
+        android:key="show_wifi_standard_icon"
+        android:title="@string/show_wifi_standard_icon_title"
+        android:summary="@string/show_wifi_standard_icon_summary"
+        android:defaultValue="false" />
 
     <com.superior.support.preferences.SystemSettingSwitchPreference
         android:key="data_disabled_icon"
