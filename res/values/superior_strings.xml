@@ -654,5 +654,9 @@
     <string name="qs_reflected">Reflected</string>
     <string name="qs_surround">Surround</string>
     <string name="qs_thin">ThinLine</string>
+    
+    <!-- Custom Data icons -->
+    <string name="theme_customization_data_title">Data icon style</string>
+    <string name="theme_customization_data_summary">Set custom data icon style</string>
 
 </resources>
