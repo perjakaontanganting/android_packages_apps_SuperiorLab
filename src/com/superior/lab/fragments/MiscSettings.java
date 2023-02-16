@@ -49,6 +49,7 @@ public class MiscSettings extends SettingsPreferenceFragment implements
     private static final String KEY_GAMES_SPOOF = "use_games_spoof";
     private static final String KEY_PHOTOS_SPOOF = "use_photos_spoof";
     private static final String KEY_NETFLIX_SPOOF = "use_netflix_spoof";
+    private static final String SMART_PIXELS = "smart_pixels";
 
     private static final String SYS_GAMES_SPOOF = "persist.sys.pixelprops.games";
     private static final String SYS_PHOTOS_SPOOF = "persist.sys.pixelprops.gphotos";
@@ -76,6 +77,19 @@ public class MiscSettings extends SettingsPreferenceFragment implements
         mNetFlixSpoof = (SwitchPreference) findPreference(KEY_NETFLIX_SPOOF);
         mNetFlixSpoof.setChecked(SystemProperties.getBoolean(SYS_NETFLIX_SPOOF, false));
         mNetFlixSpoof.setOnPreferenceChangeListener(this);
+
+        updateSmartPixelsPreference();
+    }
+
+    private void updateSmartPixelsPreference() {
+        PreferenceScreen prefSet = getPreferenceScreen();
+        boolean enableSmartPixels = getContext().getResources().
+                getBoolean(com.android.internal.R.bool.config_supportSmartPixels);
+        Preference smartPixels = findPreference(SMART_PIXELS);
+
+        if (!enableSmartPixels){
+            prefSet.removePreference(smartPixels);
+        }
     }
 
     @Override
