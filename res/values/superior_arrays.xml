@@ -167,12 +167,42 @@
         <item>@string/status_bar_battery_style_circle</item>
         <item>@string/status_bar_battery_style_dotted_circle</item>
         <item>@string/status_bar_battery_style_text</item>
+        <item>@string/status_bar_battery_style_land_a</item>
+        <item>@string/status_bar_battery_style_land_b</item>
+        <item>@string/status_bar_battery_style_land_c</item>
+        <item>@string/status_bar_battery_style_land_d</item>
+        <item>@string/status_bar_battery_style_land_e</item>
+        <item>@string/status_bar_battery_style_land_f</item>
+        <item>@string/status_bar_battery_style_land_g</item>
+        <item>@string/status_bar_battery_style_land_h</item>
+        <item>@string/status_bar_battery_style_land_i</item>
+        <item>@string/status_bar_battery_style_land_j</item>
+        <item>@string/status_bar_battery_style_land_k</item>
+        <item>@string/status_bar_battery_style_land_l</item>
+        <item>@string/status_bar_battery_style_land_m</item>
+        <item>@string/status_bar_battery_style_land_n</item>
+        <item>@string/status_bar_battery_style_land_o</item>
     </string-array>
      <string-array name="values_status_bar_battery" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
     </string-array>
     
     <!-- Monet theme styles  -->
