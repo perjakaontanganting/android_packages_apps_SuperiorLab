@@ -31,5 +31,11 @@
         android:dialogTitle="@string/status_bar_battery_percentage_title"
         android:entries="@array/status_bar_battery_percentage_entries"
         android:entryValues="@array/status_bar_battery_percentage_values" />
+        
+    <Preference
+            android:key="misc_batterysb"
+            android:fragment="com.superior.lab.fragments.MiscBatterySettings"
+            android:title="Misc Battery Icon Settings"
+            android:summary="customize statusbar battery icon settings" />
 
 </PreferenceScreen>
