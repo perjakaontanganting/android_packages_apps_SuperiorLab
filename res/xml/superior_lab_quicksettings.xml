@@ -21,6 +21,12 @@
      <PreferenceCategory
         android:key="quick_settings_general_category"
         android:title="@string/general_category">
+        
+        <Preference
+            android:key="custom_header"
+            android:fragment="com.superior.lab.fragments.QsHeader"
+            android:title="@string/status_bar_custom_header_title"
+            android:summary="@string/status_bar_custom_header_summary" />
 
         <com.superior.support.preferences.SecureSettingSwitchPreference
             android:key="quick_settings_vibrate"
