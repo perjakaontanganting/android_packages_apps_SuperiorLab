@@ -101,6 +101,20 @@
         android:title="@string/roaming_indicator_icon_title"
         android:summary="@string/roaming_indicator_icon_summary"
         android:defaultValue="true"/>
+        
+     <com.superior.support.preferences.SystemSettingSeekBarPreference 
+        android:max="50" 
+        android:min="-5" 			                                                             
+        android:title="@string/status_bar_left_padding" 
+        android:key="SB_PADDING_LEFT"  
+        android:defaultValue="0" /> 
+
+     <com.superior.support.preferences.SystemSettingSeekBarPreference 
+        android:max="50" 
+        android:min="-5"                                                 
+        android:title="@string/status_bar_right_padding"  
+        android:key="SB_PADDING_RIGHT" 
+        android:defaultValue="0" />
 
     </PreferenceCategory>
 

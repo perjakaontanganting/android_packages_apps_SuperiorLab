@@ -733,5 +733,9 @@
     <string name="brightness_slider_style_thumbslider">Thumb Slider</string>
     <string name="brightness_slider_style_line">Thin Outline</string>
     <string name="brightness_slider_style_lighty">Lighty</string>
+    
+    <!-- SB paddings -->
+    <string name="status_bar_left_padding">SB Left Padding</string>
+    <string name="status_bar_right_padding">SB Right Padding</string>
 
 </resources>
