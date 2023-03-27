@@ -21,6 +21,12 @@
 
     <PreferenceCategory
         android:title="@string/general_category">
+        
+    <Preference
+        android:key="edge_light_settings"
+        android:title="@string/edge_light_title"
+        android:summary="@string/edge_light_summary"
+        android:fragment="com.superior.lab.fragments.misc.doze.EdgeLightSettings" />
 
     <com.superior.support.preferences.SystemSettingSwitchPreference
          android:key="notification_sound_vib_screen_on"
