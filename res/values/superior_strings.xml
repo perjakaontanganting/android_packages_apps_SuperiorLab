@@ -663,5 +663,9 @@
     <string name="qs_reflected">Reflected</string>
     <string name="qs_surround">Surround</string>
     <string name="qs_thin">ThinLine</string>
+    
+    <!-- Colored QS notification icons -->  
+    <string name="qs_colored_icons_title">Colored QS notification icons</string>
+    <string name="qs_colored_icons_summary">Show colored app icon instead of monochrome icons</string>
 
 </resources>

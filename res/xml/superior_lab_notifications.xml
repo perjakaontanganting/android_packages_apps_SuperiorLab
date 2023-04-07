@@ -34,6 +34,12 @@
         android:summary="@string/reticker_colored_summary"
         android:dependency="reticker_status" />
         
+    <com.superior.support.preferences.SystemSettingSwitchPreference
+        android:key="qs_colored_icons"
+        android:title="@string/qs_colored_icons_title"
+        android:summary="@string/qs_colored_icons_summary"
+        android:defaultValue="false" />
+        
     <Preference
         android:key="edge_light_settings"
         android:title="@string/edge_light_title"
