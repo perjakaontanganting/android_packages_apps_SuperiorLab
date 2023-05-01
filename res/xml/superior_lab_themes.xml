@@ -70,6 +70,13 @@
             android:title="@string/theme_customization_icon_shape_title"
             android:summary="@string/theme_customization_icon_shape_summary"
             android:fragment="com.superior.lab.fragments.IconShapes"/>
+            
+        <com.superior.support.preferences.SecureSettingListPreference
+            android:key="brightness_slider_style"
+            android:title="@string/brightness_slider_style_title"
+            android:entries="@array/brightness_slider_style_entries"
+            android:entryValues="@array/brightness_slider_style_values"
+            android:defaultValue="0" />
 
         <!-- Navbar Style -->
         <Preference
