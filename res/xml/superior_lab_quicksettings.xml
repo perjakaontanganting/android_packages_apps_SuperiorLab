@@ -67,6 +67,13 @@
     <PreferenceCategory
         android:key="quick_settings_brighness_category"
         android:title="@string/qs_show_brightness_slider_title">
+        
+        <com.superior.support.preferences.SecureSettingListPreference
+            android:key="brightness_slider_style"
+            android:title="@string/brightness_slider_style_title"
+            android:entries="@array/brightness_slider_style_entries"
+            android:entryValues="@array/brightness_slider_style_values"
+            android:defaultValue="0" />
 
         <com.superior.support.preferences.SecureSettingListPreference
             android:key="qs_show_brightness_slider"
