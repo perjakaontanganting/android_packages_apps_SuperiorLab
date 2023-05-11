@@ -639,6 +639,8 @@
     <!-- Lockscreen Clock -->
     <string name="kg_custom_clock_color_enabled_title">Custom lockscreen clock color</string>
     <string name="kg_custom_clock_color_title">Clock color</string>
+    <string name="kg_small_clock_text_size_title">Small Lockscreen clock text size</string>
+    <string name="kg_big_clock_text_size_title">Large Lockscreen clock text size</string>
     
     <!-- Screen Off animation -->
     <string name="screen_off_animation_title">Screen off animation</string>
