@@ -164,6 +164,12 @@ public class LockScreenSettings extends SettingsPreferenceFragment implements
         updateShortcutSelection();
     }
     
+    public static void reset(Context mContext) {
+        ContentResolver resolver = mContext.getContentResolver();
+         Settings.Secure.putIntForUser(resolver,
+                Settings.Secure.DOZE_ON_CHARGE, 0, UserHandle.USER_CURRENT);
+    }       
+    
     private String getSettingsShortcutValue() {
         String value = Settings.System.getString(getActivity().getContentResolver(),
                 Settings.System.KEYGUARD_QUICK_TOGGLES_NEW);

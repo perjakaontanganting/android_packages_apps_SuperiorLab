@@ -36,6 +36,11 @@
         android:defaultValue="true" />
         
     <com.superior.support.preferences.SecureSettingSwitchPreference
+        android:key="doze_on_charge"
+        android:title="@string/doze_on_charge_title"
+        android:summary="@string/doze_on_charge_summary" />
+        
+    <com.superior.support.preferences.SecureSettingSwitchPreference
         android:key="qstile_requires_unlocking"
         android:title="@string/qstile_requires_unlocking_title"
         android:summary="@string/qstile_requires_unlocking_summary"
